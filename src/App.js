@@ -39,7 +39,7 @@ function App() {
       <Fragment>
 
 
-        <h1>Woof</h1>
+        <Chat/>
       
       
       </Fragment>

@@ -12,3 +12,8 @@ body,
 	align-items: center;
 	height: 100%;
 }
+
+#LOGIN .form-heading {
+	font-size: 30px;
+	text-align: center;
+}

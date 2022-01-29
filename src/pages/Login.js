@@ -1,14 +1,30 @@
 import React from 'react';
-import { FormControl } from '@mui/material';
-import { TextField } from '@mui/material';
-import { FormLabel } from '@mui/material';
-import { FormHelperText } from '@mui/material';
+import {
+	FormControl,
+	TextField,
+	FormLabel,
+	FormHelperText,
+	Button,
+} from '@mui/material';
 
 let Login = (props) => {
 	return (
 		<div id='LOGIN'>
 			<FormControl>
-				<FormLabel component='legend'>Sign Up</FormLabel>
+				<FormLabel className='form-heading'>Sign Up</FormLabel>
+				<br />
+				<br />
+				<TextField
+					id='form-firstname'
+					label='First Name'
+					variant='standard'
+				/>
+				<br />
+				<TextField
+					id='form-lastname'
+					label='Fast Name'
+					variant='standard'
+				/>
 				<br />
 				<TextField
 					id='form-email'
@@ -22,6 +38,10 @@ let Login = (props) => {
 					type='password'
 					variant='standard'
 				/>
+
+				<br />
+				<br />
+				<Button variant='contained'>SIGN UP</Button>
 
 				<br />
 				<br />

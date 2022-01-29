@@ -12,6 +12,9 @@ import Chat from './pages/Chat'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import Home from './pages/Home'
+import Signup from './pages/Signup'
+
+import Header from './components/Header'
 
 // MUI
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
@@ -20,9 +23,8 @@ import createTheme from '@mui/material/styles/createTheme';
 let theme = createTheme({
   palette: {
     primary: {
-      main: '#b2ebf2',
-      // black
-      contrastText: '#006064'
+      main: '#3f51b5',
+      contrastText: '#ffffff'
     },
     secondary: {
       main: '#ef5350',
@@ -42,7 +44,11 @@ function App() {
     <ThemeProvider theme={theme}>
        <Provider store={store}>
         <Fragment>
+          <Header/>
+          <Chat/>
           <Feed/>
+
+          <Signup/>
         </Fragment>
       </Provider>
     </ThemeProvider>

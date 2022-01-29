@@ -6,7 +6,8 @@ import {
 
 
 const initialState = {
-    currentPage: 0
+    currentPage: 0,
+    loading: false
 }
 
 

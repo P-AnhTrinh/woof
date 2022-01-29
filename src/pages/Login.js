@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {
 	FormControl,
 	TextField,
@@ -7,7 +7,25 @@ import {
 	Button,
 } from '@mui/material';
 
+//Redux
+import {updateCurrentPage} from '../redux/dataActions'
+import {connect} from 'react-redux'
+
 let Login = (props) => {
+
+    const [show, setShow] = useState(false)
+    const {data: {currentPage}} = props;
+
+    useEffect(()=> {
+        if (currentPage == 2){
+            setShow(true)
+        } else {
+            setShow(false)
+        }
+
+    }, [currentPage])
+
+    if (show) {
 	return (
 		<div id='LOGIN'>
 			<FormControl>
@@ -50,7 +68,20 @@ let Login = (props) => {
 				</FormHelperText>
 			</FormControl>
 		</div>
-	);
+	)
+    } else {
+        return (
+            <Fragment></Fragment>
+        )
+    }
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+    data: state.data 
+})
+
+const mapActionsToProps = {
+    updateCurrentPage
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Login);

@@ -5,20 +5,10 @@ import {
 
 
 
-export const signupUser = () => () => {
-
-    // const usersRef = collection(db, "users")
-
-    // const getUsers = async () => {
-    //     const data = await getDocs(usersRef)
-    //     console.log(data.docs)
-    // }
-
-    // getUsers()
-
-}
-
-export const updateCurrentPage = (num) => (dispatch) => {
+export const updateCurrentPage = (num) => (dispatch) => {    
+    if (num === 5){
+        num = 0
+    }
     dispatch({
         type: SET_CURRENT_PAGE,
         payload: num

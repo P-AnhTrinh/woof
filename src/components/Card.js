@@ -115,8 +115,8 @@ export default function MultiActionAreaCard(props) {
                             {props.age ? props.age : ' 42'}
                         </Typography>
                         <hr></hr>
-                        <Typography variant="body2" color="text.primary" fontWeight='bold' my={1}>
-                            Descripton:
+                        <Typography variant="body1" color="text.primary" fontWeight='bold' my={1}>
+                            Bio
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {props.description ? props.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}

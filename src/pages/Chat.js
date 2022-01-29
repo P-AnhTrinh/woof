@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, Fragment} from 'react'
 
 // MUI
 
@@ -14,11 +14,13 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 //Redux
-import {signupUser} from '../redux/dataActions'
+import { updateCurrentPage} from '../redux/dataActions'
 import {connect} from 'react-redux'
 
 
 let Chat = (props) =>  {
+
+    let {data: {currentPage}} = props;
 
     let chatRef = useRef()
 
@@ -29,19 +31,30 @@ let Chat = (props) =>  {
             inline: "start"
         });
 
-        props.signupUser()
     }
 
     useEffect(()=> {
-        scrollToBottom()
+
+        if (currentPage == 4){
+            scrollToBottom()
+            console.log(currentPage)
+        }
+      
     }, [chatRef]);
 
+    let handleGoBack = () => {
+        props.updateCurrentPage(3)
+    }
+
+    if (currentPage === 4){
+
+    
     return(
         <div style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
       
-            <Paper style={{maxWidth: '700', alignItems: 'center'}} sx={{mt: 5}}>
+            <Paper style={{maxWidth: '700', alignItems: 'center'}} sx={{mt: 2}}>
                 <div style={{display: 'flex'}}>
-                    <Button style={{width: '5px'}} sx={{mt: 1.4}}><ArrowBackIosIcon fontSize='medium' color="secondary"/></Button>
+                    <Button style={{width: '5px'}} sx={{mt: 1.4}} onClick={handleGoBack}><ArrowBackIosIcon fontSize='medium' color="secondary"/></Button>
                     <Typography sx={{ml: 1, mt: 2}} variant="h6" >
                         Hilly
                     </Typography>
@@ -71,6 +84,11 @@ let Chat = (props) =>  {
             </Paper>
         </div>
     )
+    } else {
+        return (
+            <Fragment></Fragment>
+        )
+    }
 
 }
 
@@ -81,7 +99,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    signupUser
+    updateCurrentPage
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Chat);

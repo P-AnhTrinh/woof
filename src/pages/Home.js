@@ -8,7 +8,7 @@ let Home = (props) =>  {
         <Fragment>
             <div className="row">
                 <div className="welcomeMessage">
-                    <div className="welcome"> Welcome to Woof</div>
+                    <div className="welcome">Welcome to Woof</div>
                 </div>
             </div>
         </Fragment>

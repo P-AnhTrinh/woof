@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 // MUI
 
@@ -7,7 +7,24 @@ import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography';
 import { TextField, Button } from '@mui/material';
 
+import MessageReceiver from '../components/MessageReceiver';
+import MessageSender from '../components/MessageSender';
+
 let Chat = (props) =>  {
+
+    let chatRef = useRef()
+
+    let scrollToBottom = () => {
+        chatRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "start"
+        });
+    }
+
+    useEffect(()=> {
+        scrollToBottom()
+    }, [chatRef]);
 
     return(
         <div style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
@@ -16,24 +33,20 @@ let Chat = (props) =>  {
                     Chat with Hilly
                 </Typography>
                 <hr style={{marginBottom: '15px'}}/>
-                <div style={{ maxWidth: "500px", maxHeight: "600px", width: "80vw", height: "60vh", display: "flex",flexDirection: "column", position: "relative", overflowY: 'scroll'}}>
+                <div id="chat" style={{ maxWidth: "500px", maxHeight: "600px", width: "80vw", height: "60vh", display: "flex",flexDirection: "column", position: "relative", overflowY: 'scroll'}} >
 
-                    <div style={{display:'flex', justifyContent: 'flex-end', marginRight: '30px', marginTop: '7px', marginBottom: '3px'}}>
-                        <div style={{backgroundColor: "#0024b3", borderRadius: '30px', maxWidth: '250px'}}>
-                            <Typography sx={{m: 1, p: 1}} color="white">
-                                Nice to meet yyyyyyyyyy  jrjrr jrj rejre jrj rj rejreyyyyyyyyy yyp ypypy ypypyp yp yppypyp ypyp pypypypy y you
-                            </Typography>
-                        </div>
-                    </div>
-
-                    <div style={{display:'flex', justifyContent: 'flex-start', marginLeft: '30px', marginTop: '7px', marginBottom: '3px'}}>
-                        <div style={{backgroundColor: "#e8d100",  borderRadius: '30px', maxWidth: '250px'}}>
-                            <Typography sx={{m: 1, p: 1}} color="#0024b3">
-                                Nice to m   utu tutut tm,ddfm .df. df    ntntnt nt ntnt nt nt ntnt teet youu
-                            </Typography>
-                        </div>
-                    </div>
+                    <MessageReceiver text="Nice to meet yyyyyyyyyy  jrjrr jrj rejre j"/>
+                    <MessageSender text="Nice to m   utu tutut tm,ddfm .df. df    ntntnt nt ntnt nt nt ntnt teet youu"/>
+                    <MessageReceiver text="Nice to meet yyyyyyyyyy  jrjrr jrj rejre j"/>
+                    <MessageSender text="Nice to m   utu tutut tm,ddfm .df. df    ntntnt nt ntnt nt nt ntnt teet youu"/>
                    
+                    <MessageReceiver text="Nice to meet yyyyyyyyyy  jrjrr jrj rejre j"/>
+                    <MessageSender text="Nice to m   utu tutut tm,ddfm .df. df    ntntnt nt ntnt nt nt ntnt teet youu"/>
+                   
+                    <MessageReceiver text="Nice to meet yyyyyyyyyy  jrjrr jrj rejre j"/>
+                    <MessageSender text="Nice to m   utu tutut tm,ddfm .df. df    ntntnt nt ntnt nt nt ntnt teet youu"/>
+
+                    <div ref={chatRef}></div>
                 </div>
                 <hr/>
                 <form noValidate style={{display: 'flex', margin: 1}} > 

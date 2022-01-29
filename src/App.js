@@ -39,7 +39,7 @@ function App() {
       <Fragment>
 
 
-        <Feed/>
+        <Chat/>
       
       
       </Fragment>

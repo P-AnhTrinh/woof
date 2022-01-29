@@ -12,6 +12,12 @@ import MessageSender from '../components/MessageSender';
 
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+//Redux
+import {signupUser} from '../redux/dataActions'
+import {connect} from 'react-redux'
+
+
 let Chat = (props) =>  {
 
     let chatRef = useRef()
@@ -22,6 +28,8 @@ let Chat = (props) =>  {
             block: "nearest",
             inline: "start"
         });
+
+        props.signupUser()
     }
 
     useEffect(()=> {
@@ -67,4 +75,13 @@ let Chat = (props) =>  {
 }
 
 
-export default (Chat);
+
+const mapStateToProps = (state) => ({
+    data: state.data 
+})
+
+const mapActionsToProps = {
+    signupUser
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Chat);

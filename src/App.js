@@ -3,6 +3,10 @@ import React, {Fragment} from 'react'
 
 import './App.css';
 
+// Redux
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
 //pages
 import Chat from './pages/Chat'
 import Login from './pages/Login'
@@ -36,14 +40,15 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Fragment>
+       <Provider store={store}>
+        <Fragment>
 
 
-        <Chat/>
-      
-      
-      </Fragment>
-     
+          <Chat/>
+        
+        
+        </Fragment>
+      </Provider>
     </ThemeProvider>
   );
 }

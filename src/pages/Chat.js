@@ -10,6 +10,8 @@ import { TextField, Button } from '@mui/material';
 import MessageReceiver from '../components/MessageReceiver';
 import MessageSender from '../components/MessageSender';
 
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 let Chat = (props) =>  {
 
     let chatRef = useRef()
@@ -28,10 +30,15 @@ let Chat = (props) =>  {
 
     return(
         <div style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+      
             <Paper style={{maxWidth: '700', alignItems: 'center'}} sx={{mt: 5}}>
-                <Typography sx={{mx: 5, mt: 2}} variant="h6">
-                    Chat with Hilly
-                </Typography>
+                <div style={{display: 'flex'}}>
+                    <Button style={{width: '5px'}} sx={{mt: 1.4}}><ArrowBackIosIcon fontSize='medium' color="secondary"/></Button>
+                    <Typography sx={{ml: 1, mt: 2}} variant="h6" >
+                        Hilly
+                    </Typography>
+                </div>
+               
                 <hr style={{marginBottom: '15px'}}/>
                 <div id="chat" style={{ maxWidth: "500px", maxHeight: "600px", width: "80vw", height: "60vh", display: "flex",flexDirection: "column", position: "relative", overflowY: 'scroll'}} >
 

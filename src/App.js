@@ -38,8 +38,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <Fragment>
 
-
-        <Feed/>
+        {/* <Home/> */}
+        <Header/>
+        {/* <Feed/> */}
+        
       
       
       </Fragment>

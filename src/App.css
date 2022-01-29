@@ -1,6 +1,19 @@
-.Home{
-
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
 }
-.Header{
-    
+
+#LOGIN {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#LOGIN .form-heading {
+	font-size: 30px;
+	text-align: center;
 }

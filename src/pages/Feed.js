@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MultiActionAreaCard from '../components/Card';
 import Box from '@mui/material/Box';
-
+import svg from '../static/bg.svg';
 
 let Feed = (props) =>  {
     const data = [1, 2, 3, 4, 5];
@@ -13,6 +13,9 @@ let Feed = (props) =>  {
              flexWrap: 'wrap',
              flexDirection: 'column',
              alignItems: 'center',
+             backgroundColor: '#F1EEE9',
+             backgroundImage: `url(${svg})}`,
+             backgroundRepeat: 'repeat',
              }}>
         {
             data.map((item, index) =>{

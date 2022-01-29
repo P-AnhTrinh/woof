@@ -9,14 +9,14 @@ import {
 
 export const signupUser = () => () => {
 
-    const usersRef = collection(db, "users")
+    // const usersRef = collection(db, "users")
 
-    const getUsers = async () => {
-        const data = await getDocs(usersRef)
-        console.log(data.docs)
-    }
+    // const getUsers = async () => {
+    //     const data = await getDocs(usersRef)
+    //     console.log(data.docs)
+    // }
 
-    getUsers()
+    // getUsers()
 
 }
 

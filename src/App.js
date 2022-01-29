@@ -42,11 +42,7 @@ function App() {
     <ThemeProvider theme={theme}>
        <Provider store={store}>
         <Fragment>
-
-
-          <Chat/>
-        
-        
+          <Feed/>
         </Fragment>
       </Provider>
     </ThemeProvider>

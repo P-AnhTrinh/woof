@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+#LOGIN {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}

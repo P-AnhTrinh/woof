@@ -1,10 +1,13 @@
 
-body {
-	overflow-y: scroll;
+html, body, #root {
+	/* overflow-y: scroll;
   background-image: url('../src/static/bg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.5); */  
+  height: 100%;
+  /* overflow-x: hidden; */
 }
 
 #LOGIN {
@@ -18,3 +21,143 @@ body {
 	font-size: 30px;
 	text-align: center;
 }
+
+#HOME {    
+    display: flex;
+    flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	/* height: 100%;     */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;      
+}
+
+/* #HOME .homeBackground{
+    position: absolute;
+	height: 150%;
+    width: 100%;
+    opacity: 0.4;    
+    z-index: -1;
+} */
+
+#HOME .homeTitleSection{    
+    display: flex;        
+    justify-content: space-around;
+	height: 500px;  
+    width: 100%;           
+    border: 1px solid blue;
+}
+
+#HOME .homeTitleSection .homeTitle{   
+    width: 30%;
+    font-size:75px;
+    color: 13233A;    
+    border: 1px solid red;    
+}
+
+#HOME .homeTitleSection .homeTitleImageSectionContainer{      
+    display: flex;  
+    justify-content: center;
+    width: 30%;     
+    border: 1px solid green;    
+}
+
+#HOME .homeTitleSection .homeTitleImageSectionContainer .homeTitleImageContainer{ 
+    height: 100%;   
+    width: 80%;
+    border: 1px solid yellow;
+    border-radius: 35%;
+    overflow: hidden;
+}
+
+#HOME .homeTitleSection .homeTitleImageSectionContainer .homeTitleImageContainer .homeTitleImage{           
+    background-image: url('../src/static/pic-dog-1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-position: center center;
+    background-size: 100% 100%;
+    height: 100%;       
+    width: 100%;   
+    /* border: 1px solid green; */
+} 
+
+#HOME .homeAboutSection{ 
+    display: flex;        
+    justify-content: space-around;
+	height: 500px;  
+    width: 100%;           
+    border: 1px solid blue;         
+}
+
+#HOME .homeAboutSection .homeAboutImageSectionContainer{      
+    display: flex;  
+    justify-content: center;
+    width: 30%;     
+    border: 1px solid green;    
+}
+
+#HOME .homeAboutSection .homeAboutImageSectionContainer .homeAboutImageContainer{ 
+    height: 100%;   
+    width: 80%;
+    border: 1px solid yellow;
+    border-radius: 35%;
+    overflow: hidden;
+}
+
+#HOME .homeAboutSection .homeAboutImageSectionContainer .homeAboutImageContainer .homeAboutImage{           
+    background-image: url('../src/static/pic-dog-3.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-position: center center;
+    background-size: 100% 100%;
+    height: 100%;       
+    width: 100%;   
+    /* border: 1px solid green; */
+} 
+
+#HOME .homeAboutSection .homeAbout {   
+    width: 30%;
+    font-size:75px;
+    color: 13233A;    
+    border: 1px solid red;    
+}
+
+#HOME .homeHowToSection{    
+    display: flex;        
+    justify-content: space-around;
+	height: 500px;  
+    width: 100%;           
+    border: 1px solid blue;
+}
+
+#HOME .homeHowToSection .homeHowTo{   
+    width: 30%;
+    font-size:75px;
+    color: 13233A;    
+    border: 1px solid red;    
+}
+
+#HOME .homeHowToSection .homeHowToImageSectionContainer{      
+    display: flex;  
+    justify-content: center;
+    width: 30%;     
+    border: 1px solid green;    
+}
+
+#HOME .homeHowToSection .homeHowToImageSectionContainer .homeHowToImageContainer{ 
+    height: 100%;   
+    width: 80%;
+    border: 1px solid yellow;
+    border-radius: 35%;
+    overflow: hidden;
+}
+
+#HOME .homeHowToSection .homeHowToImageSectionContainer .homeHowToImageContainer .homeHowToImage{           
+    background-image: url('../src/static/pic-dog-2.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-position: center center;
+    background-size: 100% 100%;
+    height: 100%;       
+    width: 100%;   
+     border: 1px solid green; 
+} 

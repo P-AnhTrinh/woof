@@ -5,7 +5,7 @@ Project built for ConUHacks VI.
 
 ## Demo
 
-To try a demo deployment, visit this [link]()
+To try a demo deployment, visit this [link](https://woof-d3287.web.app)
 
 ## Table Of Contents
 

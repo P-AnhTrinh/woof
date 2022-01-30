@@ -1,8 +1,13 @@
 
 import React, {Fragment, useEffect, useState} from 'react';
+import {db, storage, auth} from '../firebaseConfig';
+import {collection, addDoc, setDoc, doc} from 'firebase/firestore';
+import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 
 //Redux
-import { updateCurrentPage} from '../redux/dataActions'
+import { updateCurrentPage, setLoading} from '../redux/dataActions'
 import {connect} from 'react-redux'
 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -23,29 +28,132 @@ import {
 
 let Signup = (props) => {
 
+    //const userCollectionRef = collection(db, "users")
     let [fullName, setFullName] = useState('')
     let [dogName, setDogName] = useState('')
     let [email, setEmail] = useState('')
+    let [age, setAge] = useState('')
+    let [weight, setWeight] = useState('')
+    let [breed, setBreed] = useState('')
+    let [bio, setBio] = useState('')
     let [city, setCity] = useState('')
     let [password, setPassword] = useState('')
     let [confirmPassword, setConfirmPassword] = useState('')
-    let [imagePresent, setImagePresent] = useState(false)
+    let [imagePresent, setImagePresent] = useState(false);
+
+    let [image, setImage] = useState('')
 
     let {data: {currentPage, loading}} = props;
 
-    let handleSubmit = () => {
 
+    let addData = (url, id) => {
+
+        setDoc(doc(db, "users", id), {
+            emai: email, 
+            dogName: dogName, 
+            fullName, fullName, 
+            age: age, 
+            weight: weight, 
+            breed: breed, 
+            bio: bio, 
+            city: city,
+            image: url           
+        })
+        .then(() => {
+            props.setLoading(false)
+            props.updateCurrentPage(2)
+    
+            setFullName('')
+            setDogName('')
+            setEmail('')
+            setAge('')
+            setWeight('')
+            setBreed('')
+            setBio('')
+            setCity('')
+            setPassword('')
+            setConfirmPassword('')
+            setImagePresent(false);
+            setImage('')
+    
+        })
+        .catch((err) => console.log(err))
+
+       
     }
 
-    let handleChange = () => {
+    let createUser = () => {
 
+        props.setLoading(true)
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user
+            let id = user.uid
+            let storageRef = ref(storage, `images/${image.name}`)
+            const uploadTask = uploadBytesResumable(storageRef, image)
+            uploadTask.on(
+                "state_changed",
+                snapshot => {}, 
+                error => {
+                    console.log(error)
+                }, 
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        addData(downloadURL, id)
+                    });
+                }
+            )
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });     
     }
+
+    let handleSubmit = (event) => {
+        event.preventDefault()
+
+        if (password !== confirmPassword) {
+            alert("The passwords need to match")
+        } else if (password === "" || confirmPassword === "" || age === "" || bio === "" || 
+            weight === "" || city === "" || breed === "" || dogName === "" || fullName === "" || email === "" || image === ""){
+            alert("Please fill all the fields")
+        } else {
+            createUser()
+        }
+        console.log(image)
+    }
+
+    let handleChange = (event) => {
+        if (event.target.name === 'email'){
+            setEmail(event.target.value)
+        } else if (event.target.name === 'password'){
+            setPassword(event.target.value)
+        }  else if (event.target.name === 'confirmPassword'){
+            setConfirmPassword(event.target.value)
+        } else if (event.target.name === 'fullName'){
+            setFullName(event.target.value)
+        } else if (event.target.name === 'dogName'){
+            setDogName(event.target.value)
+        } else if (event.target.name === 'age'){
+            setAge(event.target.value)
+        } else if (event.target.name === 'weight'){
+            setWeight(event.target.value)
+        } else if (event.target.name === 'bio'){
+            setBio(event.target.value)
+        } else if (event.target.name === 'city'){
+            setCity(event.target.value)
+        } else if (event.target.name === 'breed'){
+            setBreed(event.target.value)
+        }
+    }
+
 
     let handleImage = (e) => {
 
         if (e.target.files[0]){
             setImagePresent(true)
-
+            setImage(e.target.files[0])
 
         } else {
             setImagePresent(false)
@@ -103,7 +211,7 @@ let Signup = (props) => {
                             id="DogName"
                             label="Dog Name"
                             autoComplete="Dog-name"
-                            name="DogName"
+                            name="dogName"
                             value={dogName} 
                             onChange={handleChange}
                         />
@@ -116,7 +224,7 @@ let Signup = (props) => {
                             label="Breed"
                             autoComplete="Dog Breed"
                             name="breed"
-                            value={dogName} 
+                            value={breed} 
                             onChange={handleChange}
                         />
                         
@@ -125,12 +233,11 @@ let Signup = (props) => {
                             required
                             fullWidth
                             type="number"
-                            minValue={0}
                             id="age"
                             label="Age"
                             autoComplete="Age"
                             name="age"
-                            value={dogName} 
+                            value={age} 
                             onChange={handleChange}
                         />
 
@@ -141,11 +248,11 @@ let Signup = (props) => {
                             id="weight"
                             label="Weight"
                             name="weight"
-                            
+                            type="number"
                             InputProps={{
                               startAdornment: <InputAdornment position="start">kg</InputAdornment>,
                             }}
-                            value={dogName} 
+                            value={weight} 
                             onChange={handleChange}
                         />
 
@@ -159,7 +266,7 @@ let Signup = (props) => {
                             label="Little Description"
                             autoComplete="Bio"
                             name="bio"
-                            value={dogName} 
+                            value={bio} 
                             onChange={handleChange}
                         />
 
@@ -282,7 +389,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    updateCurrentPage
+    updateCurrentPage, setLoading
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Signup);

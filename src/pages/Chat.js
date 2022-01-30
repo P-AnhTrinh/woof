@@ -14,7 +14,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 //Redux
-import { updateCurrentPage} from '../redux/dataActions'
+import { updateCurrentPage, setChatId} from '../redux/dataActions'
 import {connect} from 'react-redux'
 
 
@@ -40,13 +40,14 @@ let Chat = (props) =>  {
             console.log(currentPage)
         }
       
-    }, [chatRef]);
+    }, [currentPage]);
 
     let handleGoBack = () => {
         props.updateCurrentPage(3)
+        props.setChatId(null)
     }
 
-    if (currentPage === 4){
+    if (currentPage == 4){
 
     
     return(
@@ -99,7 +100,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    updateCurrentPage
+    updateCurrentPage, setChatId
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Chat);

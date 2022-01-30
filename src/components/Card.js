@@ -1,15 +1,36 @@
-import * as React from 'react';
+import React, {Fragment} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Container } from '@mui/material';
-export default function MultiActionAreaCard(props) {
+
+//Redux
+import { setChatId, updateCurrentPage,} from '../redux/dataActions'
+import {connect} from 'react-redux';
+
+
+
+let MultiActionAreaCard = (props) => {
+
+    let handleClick = (event) => {
+        props.setChatId(event.target.id)
+        console.log(event.target.id)
+        props.updateCurrentPage(4)
+    }
+
     return (
         <Card
             sx={{
                 maxWidth: {
+                    xs: '300px',
+                    sm: '300px',
+                    md: '600px',
+                    lg: '650px',
+                    xl: '800px',
+                },
+                minWidth: {
                     xs: '300px',
                     sm: '300px',
                     md: '600px',
@@ -67,7 +88,7 @@ export default function MultiActionAreaCard(props) {
                             padding: 0,
                         }}>
                         <Typography gutterBottom variant="h4" component="div">
-                            {props.petName ? props.petName : 'Max'}
+                            {props.dog ? props.dog : 'Max'}
                         </Typography>
                         <hr/>
                         <Typography gutterBottom variant="body1" component="div"
@@ -79,7 +100,7 @@ export default function MultiActionAreaCard(props) {
                                 fontWeight: 'bold',
                             }}>
                             <div>Owner: </div>
-                            {props.ownerName ? props.ownerName : 'Jhon Doe'}
+                            {props.owner ? props.owner : 'John Doe'}
                         </Typography>
                         <Typography gutterBottom variant="body1" component="div"
                             sx={{
@@ -101,7 +122,7 @@ export default function MultiActionAreaCard(props) {
                                 fontWeight: 'bold',
                             }}>
                             <div>Weight: </div>
-                            {props.weight ? props.weight + ' lbs' : '15 lbs'}
+                            {props.weight ? props.weight + ' kg' : '15 kg'}
                         </Typography>
                         <Typography gutterBottom variant="body1" component="div"
                             sx={{
@@ -114,31 +135,61 @@ export default function MultiActionAreaCard(props) {
                             <div>Age: </div>
                             {props.age ? props.age : ' 42'}
                         </Typography>
+                        <Typography gutterBottom variant="body1" component="div"
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                padding: '0px 25px',
+                                fontSize: '1rem',
+                                fontWeight: 'bold',
+                            }}>
+                            <div>City: </div>
+                            {props.city ? props.city : ' Earth'}
+                        </Typography>
                         <hr></hr>
                         <Typography variant="body1" color="text.primary" fontWeight='bold' my={1}>
                             Bio
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {props.description ? props.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
+                            {props.bio ? props.bio : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'end',
-                    }}>
-                    <Button size="medium"
+
+                {
+                    !props.profile ? (
+                        <CardActions
                         sx={{
-                            boxShadow: 1,
-                            bgcolor: 'primary.main',
-                            color: '#000',
-                            
+                            display: 'flex',
+                            justifyContent: 'end',
                         }}>
-                        Chat
-                    </Button>
-                </CardActions>
+                        <Button size="medium"
+                            color="primary"
+                            id={props.id}
+                            onClick={handleClick}
+                            sx={{
+                                boxShadow: 1
+                            }}>
+                            Chat
+                        </Button>
+                    </CardActions>
+                    ) : (
+                        <Fragment></Fragment>
+                    )
+                }
+            
             </Container>
         </Card>
     );
 }
+
+const mapStateToProps = (state) => ({
+    data: state.data 
+})
+
+const mapActionsToProps = {
+    setChatId, updateCurrentPage
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(MultiActionAreaCard);
+

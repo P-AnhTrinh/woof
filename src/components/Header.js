@@ -78,6 +78,7 @@ let Header = (props) =>  {
                         {
                             currentPage> 2 ? (
                                 <Fragment>
+                                    <Button sx={{ my: 2, color: 'white', display: 'block' }} value={6} onClick={handleChange}>Profile</Button>
                                     <Button sx={{ my: 2, color: 'white', display: 'block' }} value={3} onClick={handleChange}>Feed</Button>
                                     <Button sx={{ my: 2, color: 'white', display: 'block' }} value={5} onClick={handleChange}>Log out</Button>
                                 </Fragment>

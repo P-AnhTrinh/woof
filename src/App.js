@@ -14,7 +14,8 @@ import Feed from './pages/Feed'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 
-import Header from './components/Header'
+import Header from './components/Header';
+import Profile from './pages/Profile'
 
 // MUI
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
@@ -47,8 +48,9 @@ function App() {
           <Header/>
           <Chat/>
           <Feed/>
-
+          <Login/>
           <Signup/>
+          <Profile/>
         </Fragment>
       </Provider>
     </ThemeProvider>

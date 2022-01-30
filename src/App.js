@@ -1,6 +1,5 @@
 
 import React, {Fragment} from 'react'
-import { useMediaQuery } from 'react-responsive'
 
 import './App.css';
 

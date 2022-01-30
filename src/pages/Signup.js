@@ -1,10 +1,9 @@
 
 import React, {Fragment, useEffect, useState} from 'react';
 import {db, storage, auth} from '../firebaseConfig';
-import {collection, addDoc, setDoc, doc} from 'firebase/firestore';
+import {setDoc, doc} from 'firebase/firestore';
 import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
 
 //Redux
 import { updateCurrentPage, setLoading} from '../redux/dataActions'
@@ -107,6 +106,8 @@ let Signup = (props) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            alert("An error occured. Please Try Again")
+            props.setLoading(false)
         });     
     }
 
@@ -121,7 +122,6 @@ let Signup = (props) => {
         } else {
             createUser()
         }
-        console.log(image)
     }
 
     let handleChange = (event) => {
@@ -157,8 +157,6 @@ let Signup = (props) => {
 
         } else {
             setImagePresent(false)
-        
-        
         }
 
     }

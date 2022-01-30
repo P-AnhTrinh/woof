@@ -1,21 +1,12 @@
 
-
 import React, {Fragment, useState} from 'react'
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 
 //Redux
 import { updateCurrentPage} from '../redux/dataActions'
@@ -63,7 +54,6 @@ let Header = (props) =>  {
 
     const handleChange = (event) => {
         setValue(event.target.value);
-        console.log(event.target.value)
         props.updateCurrentPage(event.target.value)
     };
 
@@ -101,15 +91,7 @@ let Header = (props) =>  {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <AppBar position="static">
-                <Box sx={{ width: '100%' }}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider', alignItems: 'center' }}>
-                        
-                        
-                           
-                    </Box>
-                </Box>
-            </AppBar>
+
         </Fragment>
     )
 

@@ -4,10 +4,7 @@ import {db, auth} from '../firebaseConfig';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 
 import {
-	FormControl,
 	TextField,
-	FormLabel,
-	FormHelperText,
 	Button,
     Box,
     Grid,
@@ -43,7 +40,6 @@ let Login = (props) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user.uid)
             props.setUserId(user.uid)
             props.updateCurrentPage(3)
             props.setLoading(false)
@@ -52,7 +48,6 @@ let Login = (props) => {
             
         })
         .catch((error) => {
-            console.log(error)
             alert("An Error occured. Please Try Again")
             props.setLoading(false)
             setEmail('')

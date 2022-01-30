@@ -32,7 +32,6 @@ export const setChatId= (id) => (dispatch) => {
 
 
 export const updateCurrentPage = (num) => (dispatch) => {    
-    console.log(num)
     if (num == 5){
         num = 0
         setUserId(null)

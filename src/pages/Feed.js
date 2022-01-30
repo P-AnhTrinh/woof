@@ -10,7 +10,6 @@ import {updateCurrentPage, setUser} from '../redux/dataActions'
 import {connect} from 'react-redux'
 
 let Feed = (props) =>  {
-    const data = [1, 2, 3, 4, 5];
     const [dogs, setDogs] = useState([])
 
     const {data: {currentPage, userId}} = props;
@@ -20,7 +19,6 @@ let Feed = (props) =>  {
     const usersCollectionRef = collection(db, 'users')
 
     useEffect(() => {
-
         if (currentPage > 1){
             const getPuppies = async () => {
                 
@@ -34,19 +32,13 @@ let Feed = (props) =>  {
     }, [currentPage])
 
 
-
     useEffect(()=> {
         if (currentPage == 3){
             setShow(true)
         } else {
             setShow(false)
         }
-
     }, [currentPage])
-
-    let handleUser = (item) => {
-        props.setUser(item)
-    }
 
     if (show) {
     

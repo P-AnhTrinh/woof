@@ -1,21 +1,14 @@
 
 import React, { useEffect, useRef, Fragment, useState} from 'react';
 
-import { onSnapshot, collection, doc, setDoc,  updateDoc, arrayUnion, getDoc} from 'firebase/firestore';
-import {db, storage, auth} from '../firebaseConfig';
-
+import { onSnapshot, doc, setDoc,  updateDoc, arrayUnion, getDoc} from 'firebase/firestore';
+import {db} from '../firebaseConfig';
+import MessageReceiver from '../components/MessageReceiver';
 // MUI
-
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography';
 import { TextField, Button } from '@mui/material';
-
-import MessageReceiver from '../components/MessageReceiver';
-import MessageSender from '../components/MessageSender';
-
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
 //Redux
 import { updateCurrentPage, setChatId} from '../redux/dataActions'
 import {connect} from 'react-redux'
@@ -26,9 +19,6 @@ let Chat = (props) =>  {
     let {data: {currentPage, chatId, userId}} = props;
     let [message, setMessage] = useState('')
     let [list, setList] = useState([])
-    // const messageRef = db.collection('messages')
-    // const query = messageRef.orderBy('createdAt').limit(25)
-
 
     let chatRef = useRef()
 
@@ -43,10 +33,8 @@ let Chat = (props) =>  {
 
     let handleChange = (event) => {
         if (event.target.name === 'message'){
-            setMessage(event.target.value)
-         
+            setMessage(event.target.value)         
         }
-        
     }
 
     useEffect(()=> {
@@ -59,18 +47,14 @@ let Chat = (props) =>  {
                 msgId = `${chatId.id}&&&&&${userId}`
             }
 
-
             const unsub = onSnapshot(doc(db, "messages", msgId), (doc) => {
-
                 let data = doc.data()
-
                 if (data !== undefined){
                     setList(data.messages)
                     scrollToBottom()
                     
                 }
-                
-                
+                       
             });
         }
         
@@ -157,8 +141,8 @@ let Chat = (props) =>  {
                 <div id="chat" style={{ maxWidth: "500px", maxHeight: "600px", width: "80vw", height: "60vh", display: "flex",flexDirection: "column", position: "relative", overflowY: 'scroll'}} >
 
                     {
-                        list.map(msg => (
-                            <MessageReceiver text={msg.msg} id ={msg.id}/>
+                        list.map((msg, index) => (
+                            <MessageReceiver key={index} text={msg.msg} id ={msg.id}/>
                         ))
                     }
 

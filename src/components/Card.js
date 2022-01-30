@@ -11,12 +11,10 @@ import { setChatId, updateCurrentPage,} from '../redux/dataActions'
 import {connect} from 'react-redux';
 
 
-
 let MultiActionAreaCard = (props) => {
 
     let handleClick = (event) => {
         props.setChatId({id: event.target.id, name:  event.target.name})
-        console.log(event.target.id)
         props.updateCurrentPage(4)
     }
 

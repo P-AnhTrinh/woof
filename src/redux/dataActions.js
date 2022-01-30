@@ -1,4 +1,5 @@
 
+import {auth} from '../firebaseConfig';
 import {
     SET_CURRENT_PAGE,
     SET_LOADING,
@@ -36,6 +37,7 @@ export const updateCurrentPage = (num) => (dispatch) => {
         num = 0
         setUserId(null)
         setUser(null)
+        auth.signOut()
 
     }
     dispatch({

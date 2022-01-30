@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 let MultiActionAreaCard = (props) => {
 
     let handleClick = (event) => {
-        props.setChatId(event.target.id)
+        props.setChatId({id: event.target.id, name:  event.target.name})
         console.log(event.target.id)
         props.updateCurrentPage(4)
     }
@@ -166,6 +166,8 @@ let MultiActionAreaCard = (props) => {
                         <Button size="medium"
                             color="primary"
                             id={props.id}
+                            name={props.dog}
+                            
                             onClick={handleClick}
                             sx={{
                                 boxShadow: 1

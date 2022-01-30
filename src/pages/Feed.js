@@ -23,8 +23,8 @@ let Feed = (props) =>  {
 
         if (currentPage > 1){
             const getPuppies = async () => {
+                
                 const data = await getDocs(usersCollectionRef);
-                console.log(data)
                 setDogs(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
 
                 props.setUser(dogs.filter(dog => dog.id == userId )[0])

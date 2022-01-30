@@ -45,8 +45,8 @@ let MultiActionAreaCard = (props) => {
                     lg: 'row',
                     xl: 'row',
                 },
-                backdropFilter: 'blur(10px)',
-                backgroundColor: 'rgba(255,255,255,.75)',
+                backdropFilter: 'blur(15px)',
+                backgroundColor: 'primary',
             }}>
             <CardMedia
                 component="img"
@@ -165,7 +165,7 @@ let MultiActionAreaCard = (props) => {
                             color="primary"
                             id={props.id}
                             name={props.dog}
-                            
+                            filled
                             onClick={handleClick}
                             sx={{
                                 boxShadow: 1

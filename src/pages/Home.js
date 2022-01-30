@@ -26,25 +26,20 @@ let Home = (props) =>  {
                 </div>   
                 <div className='homeAbout'>
                     <Typography
-                        variant="h1"
-                        color="red"
+                        variant="h4"
+                        color='1f9h3fi'
                     >
-                        About
+                        About<br />
+                    </Typography><br/>
+                    <Typography
+                        variant="h6"
+                    >
+                        As a pet parent, letting your dogs alone can be stressful. <br/>
+                        Don't worry, we have you covered! With Woof, you can arrange play dates for your dogs with other registered owners in your area. <br/>
+                        And of course... no need to matching! Yay, let's register!
                     </Typography>
                 </div>                     
             </div>
-
-            <div className='homeHowToSection'>
-                <div className='homeHowTo'>
-                    How To
-                </div>      
-                <div className='homeHowToImageSectionContainer'>
-                    <div className='homeHowToImageContainer'>
-                        <div className='homeHowToImage'></div>
-                    </div>                     
-                </div>                
-            </div>
-
         </div>
 
     )

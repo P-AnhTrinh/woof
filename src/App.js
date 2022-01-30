@@ -1,5 +1,6 @@
 
 import React, {Fragment} from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import './App.css';
 
@@ -51,6 +52,7 @@ function App() {
           <Login/>
           <Signup/>
           <Profile/>
+          <Home/>
         </Fragment>
       </Provider>
     </ThemeProvider>
